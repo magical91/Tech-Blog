@@ -4,9 +4,9 @@
         <p>{{post.content}}</p>
     </div>
     <div class="meta">
-        Post created by {{post.user.username}} on {{post.created_at}}
+        Post created by {{post.user.username}} on {{format_date post.created_at}}
         |
-        <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+        <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
 </article>
 
@@ -26,7 +26,7 @@
     {{#each post.comments}}
     <section class="comment">
         <div class="meta">
-            {{user.username}} on {{created_at}}
+            {{user.username}} on {{format_date created_at}}
         </div>
         <div class="text">
             {{comment_text}}
