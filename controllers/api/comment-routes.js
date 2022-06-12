@@ -4,12 +4,6 @@ const { Comment } = require('../../models');
 router.get('/', (req, res) => {
     Comment.findAll({
         order: [['created_at', 'DESC']]
-        // include: [
-        //     {
-        //         model: User,
-        //         attributes: ['username']
-        //     }
-        // ]
     })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
