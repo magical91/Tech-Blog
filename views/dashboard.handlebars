@@ -8,8 +8,31 @@
         </div>
         <div>
             <label for="content">Content</label>
-            <input id="content" name="content" />
+            <textarea id="content" name="content"></textarea>
         </div>
         <button type="submit" class="btn">Create</button>
     </form>
 </section>
+
+{{#if posts.length}}
+<section>
+    <h2>Your Posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            <article class="post">
+                <div class="title">
+                    <a href="/post/{{id}}">{{title}}</a>
+                </div>
+                <div class="meta">
+                    Created on {{format_date created_at}}
+                </div>
+            </article>
+            <a href="/post/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>
